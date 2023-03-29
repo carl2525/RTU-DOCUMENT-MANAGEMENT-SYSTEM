@@ -385,12 +385,6 @@ if(!isset($_SESSION["admin_user"])){
         </a>
       </li>
       <li>
-        <a href="dashboard.php" class="nav-link text-white">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-          Dashboard
-        </a>
-      </li>
-      <li>
         <a href="#" class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#user"/></svg>
           <?php echo ucwords(htmlentities($username)); ?> Files
