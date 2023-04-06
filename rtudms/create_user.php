@@ -48,45 +48,45 @@ require 'PHPMailer/src/SMTP.php';
 
      $mail= new PHPMailer(true);
     try {
-    //Server settings                   //Enable verbose debug output
-    $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'cergorobao@rtu.edu.ph';                     //SMTP username
-    $mail->Password   = '12345678';                               //SMTP password
-    $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
-    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+  //   //Server settings                   //Enable verbose debug output
+  //   $mail->isSMTP();                                            //Send using SMTP
+  //   $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+  //   $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+  //   $mail->Username   = 'cergorobao@rtu.edu.ph';                     //SMTP username
+  //   $mail->Password   = '12345678';                               //SMTP password
+  //   $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
+  //   $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-    //Recipients
-    $mail->setFrom('cergorobao@rtu.edu.ph', 'RTU|DMS Newly Created Account');
-    $mail->addAddress($email_address);     //Add a recipient        //Name is optional
-    $mail->addReplyTo('no-reply@cergorobaortu.edu.ph', 'No Reply');
+  //   //Recipients
+  //   $mail->setFrom('cergorobao@rtu.edu.ph', 'RTU|DMS Newly Created Account');
+  //   $mail->addAddress($email_address);     //Add a recipient        //Name is optional
+  //   $mail->addReplyTo('no-reply@cergorobaortu.edu.ph', 'No Reply');
 
-    $url="https://".$_SERVER["HTTP_HOST"].dirname($_SERVER["PHP_SELF"]). "/index.php";
+  //   $url="https://".$_SERVER["HTTP_HOST"].dirname($_SERVER["PHP_SELF"]). "/index.php";
 
 
-   //Optional name
+  //  //Optional name
 
-    //Content
-    $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Your Login Credentials at RTU|DMS';
-    $mail->Body    = "<h1>Your Account is Created in RTU|DMS</h1>
-                      <h3>Hi $user_name,</h3>
-                      Your Email Account is Sucessfully Registered at RTU|DMS.<br>
-                      <h3>The Login Credentials of Your Account:</h3>
-                      <b>Email: </b>$email_address<br>
-                      <b>Password: </b>$password<br>
-                      <b>Status: </b>User<br><br>
+  //   //Content
+  //   $mail->isHTML(true);                                  //Set email format to HTML
+  //   $mail->Subject = 'Your Login Credentials at RTU|DMS';
+  //   $mail->Body    = "<h1>Your Account is Created in RTU|DMS</h1>
+  //                     <h3>Hi $user_name,</h3>
+  //                     Your Email Account is Sucessfully Registered at RTU|DMS.<br>
+  //                     <h3>The Login Credentials of Your Account:</h3>
+  //                     <b>Email: </b>$email_address<br>
+  //                     <b>Password: </b>$password<br>
+  //                     <b>Status: </b>User<br><br>
 
-                      Access Link Via:<br>
-                      <a href='$url'>$url</a><br><br>
+  //                     Access Link Via:<br>
+  //                     <a href='$url'>$url</a><br><br>
 
               
-                      Please Changed Your Default Password When you First Login<br>
-                      If you need help, please contact the site administration.<br><br>   
-                      <b>- RTU|DMS Team</b>" ;
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-    $mail->send();
+  //                     Please Changed Your Default Password When you First Login<br>
+  //                     If you need help, please contact the site administration.<br><br>   
+  //                     <b>- RTU|DMS Team</b>" ;
+  //   $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+  //   $mail->send();
 
 
 			$conn->query("INSERT INTO `login_user` VALUES('0','$user_name', '$email_address', '$user_password', '$user_status', '$designation')") or die(mysqli_error($conn));
