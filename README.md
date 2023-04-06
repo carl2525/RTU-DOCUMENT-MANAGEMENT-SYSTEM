@@ -26,3 +26,5 @@ NOTE:
 When department_office is truncated/emptied (thru Mysql), this code needs to be executed to start incrementation from 1000.
 
 ALTER TABLE department_office MODIFY COLUMN ID INT(11) AUTO_INCREMENT, AUTO_INCREMENT = 1000;
+
+PHPMailer Disabled due to malfunction (made it into a comment)
