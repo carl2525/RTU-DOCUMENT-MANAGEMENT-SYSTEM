@@ -6,6 +6,52 @@ if(!isset($_POST["logIn"])){
      header("location:../index.php");
 }
 
+
+
+date_default_timezone_set("asia/manila");
+$currentYear = date("Y",strtotime("+0 HOURS"));
+
+$query = "SELECT * FROM yearvalidation";
+
+// execute query 
+$result = mysqli_query($conn, $query) or die ("Error in query: $query. ".mysqli_error()); 
+$rowYr = mysqli_fetch_assoc($result); 
+$yr = $rowYr['YEAR'];
+
+// see if any rows were returned 
+if (mysqli_num_rows($result) > 0) { 
+
+	//download_log
+	mysqli_query($conn, "DELETE FROM download_log WHERE YEAR <> $currentYear;");
+
+	//upload_log
+	mysqli_query($conn, "DELETE FROM upload_log WHERE YEAR <> $currentYear;");
+
+	//yearvalidation
+	mysqli_query($conn, "DELETE FROM yearvalidation WHERE YEAR <> $currentYear;");
+
+	if ($currentYear != $yr){
+
+	//Admin, Employee Logged Sessions
+	mysqli_query($conn, "TRUNCATE TABLE history_log;");
+	mysqli_query($conn, "TRUNCATE TABLE history_log1;");	
+		
+	} else {
+
+	$updateYear = "UPDATE yearvalidation SET YEAR=$currentYear";
+	mysqli_query($conn, $updateYear);
+
+	}
+} 
+
+if (mysqli_num_rows($result) == 0) { 
+
+	$insertYr = "INSERT INTO yearvalidation (YEAR) VALUES ('$currentYear');";
+	mysqli_query($conn, $insertYr);
+}
+
+
+
 if(isset($_POST["logIn"])){
 
   date_default_timezone_set("asia/manila");
@@ -25,6 +71,7 @@ $query=mysqli_query($conn,"SELECT * FROM  login_user WHERE email_address = '$use
 
            $_SESSION["user_no"] = $row["id"];
 		   $_SESSION["email_address"] = $row["email_address"];
+       $_SESSION["user_status"] = $row["user_status"];
     
            $counter=mysqli_num_rows($query);
             

@@ -28,3 +28,8 @@ When department_office is truncated/emptied (thru Mysql), this code needs to be 
 ALTER TABLE department_office MODIFY COLUMN ID INT(11) AUTO_INCREMENT, AUTO_INCREMENT = 1000;
 
 PHPMailer Disabled due to malfunction (made it into a comment)
+
+update 4/7/2023
+
+added year validation for user (login.php)
+fixed user first time login error (missing code)
