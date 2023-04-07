@@ -936,6 +936,14 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 
         else{
 
+          date_default_timezone_set("asia/manila");
+         $time = date("Y/m/d H:i:s",strtotime("+0 HOURS"));
+         $timeprint = date("Y-m-d H;i;s",strtotime("+0 HOURS"));
+         $year = date("Y",strtotime("+0 HOURS"));
+
+        $temp = explode(".",$filename);
+        $newfilename = $temp[0].round(microtime(true)) . '.' . end($temp);
+
         
 
          if(!is_dir("../../uploads/".$foldername)) mkdir("../../uploads/".$foldername);

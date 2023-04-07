@@ -559,22 +559,41 @@ $(document).ready(function() {
 
 
           <a href='downloads.php?file_id=<?php echo $id; ?>' onclick="downloadYes(event)" class="btn btn-sm btn-outline-primary"><i class="fa fa-download"></i>
+
  <script>
-              function downloadYes(evs){
-                document.querySelector("body").style.overflow = 'hidden';
-                evs.preventDefault();
-                var urlToRedirect = evs.currentTarget.getAttribute('href');
-                window.location.href=urlToRedirect;
-                  Swal.fire({
-                  icon: 'success',
-                  title: 'Downloading!!',
-                  text: 'Your Requested File is Now Downloading.',
-                  showConfirmButton: false,
-                  timer: 7000
-                }).then(function(){
-                  }) 
-                document.querySelector("body").style.overflow = 'visible';
-              }
+              function downloadYes(ev){
+    document.querySelector("body").style.overflow = 'hidden';
+    ev.preventDefault();
+    var urlToRedirect = ev.currentTarget.getAttribute('href');
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-primary ms-2'
+        },
+        buttonsStyling: false
+    });
+
+    swalWithBootstrapButtons.fire({
+        title: 'Copyrighted File!!',
+        text: "This File is Property of RTU and Must be Used for RTU educational purposes only.",
+        icon: 'warning',
+        showCancelButton: false,
+        confirmButtonText: 'Okay',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href=urlToRedirect;
+            Swal.fire({
+                icon: 'success',
+                title: 'Downloading!!',
+                text: 'Your Requested File is Now Downloading.',
+                showConfirmButton: false,
+                timer: 7000
+            });
+        } else {
+            document.querySelector("body").style.overflow = 'visible';
+        }
+    });
+}
           </script>
           
           </a> 

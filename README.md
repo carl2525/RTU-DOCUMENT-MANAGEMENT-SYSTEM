@@ -33,3 +33,8 @@ update 4/7/2023
 
 added year validation for user (login.php)
 fixed user first time login error (missing code)
+
+-----------------------------------------------------------------------
+
+added copyright prompt (sharewithme.php, ownfiles.php, privatefiles.php user/employee side)
+fixed fileprocess doesn't insert current year on uploads (user/employee side)
