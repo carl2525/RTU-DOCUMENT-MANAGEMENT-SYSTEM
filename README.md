@@ -38,3 +38,6 @@ fixed user first time login error (missing code)
 
 added copyright prompt (sharewithme.php, ownfiles.php, privatefiles.php user/employee side)
 fixed fileprocess doesn't insert current year on uploads (user/employee side)
+
+update 4/11/2023
+Fixed PHPMailer Could not Authenticate Problem.
