@@ -40,7 +40,7 @@ require 'PHPMailer/src/SMTP.php';
          </script>";
 		}else{
       $status = 'Admin';
-	$query = mysqli_query($conn, "INSERT INTO newlycreatedAdmin(email, status) VALUES ('$user_email' ,'$status')");
+	$query = mysqli_query($conn, "INSERT INTO newlycreatedadmin(email, status) VALUES ('$user_email' ,'$status')");
     if(!$query){
         exit("Error");
     }
